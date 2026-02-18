@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>To Do List</title>
 </head>
 <body>
-    
+    <header>
+        <h1>To Do List</h1>
+    </header>
+
+    <main id="screen">
+        <button id="add" onclick="addNote()">+</button>
+
+        <div id="addbox" style="display: none;">
+            <input type="text" id="title" placeholder="Note title">
+
+            <textarea type="text" id="desc" placeholder="Description..."></textarea>
+
+            <div id="buttons">
+                <button id="save" onclick="save()">Save</button>
+                <button id="back" onclick="back()">Back</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function addNote(){
+            document.querySelector("#add").remove();
+
+            let screen = document.querySelector("#screen");
+            screen.style.display = "block"
+            screen.style.height = "auto"
+
+            let box = document.querySelector("#addbox")
+            box.style.margin = "15px"
+            box.style.display = 'block'
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&family=Squada+One&display=swap');
+
+:root {
+    --font: 'Elms Sans', 'Jost', 'SN Pro', 'Squada One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    color: #ffffffeb;
+    background: #000000ec;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    background-color: #00000081;
+    border-bottom: solid 3px #0000003d;
+}
+
+h1 {font-size: 1.5rem;}
+
+#screen {
+    background-color: #00000081;
+    border: solid 3px #0000003d;
+    height: 50vh;
+    width: 80%;
+    margin: 5vh auto;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.2rem;
+    padding: 4px 10px;
+}
+
+#add {
+    font-size: 60px;
+    color: #ffffffeb;
+    padding: 20px 40px;
+    border: solid 3px #0000003d;
+    border-radius: 10px;
+    background-color: #0000004e;
+}
+
+#add:hover {
+    filter: invert();
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+#addbox {
+    border: solid 3px #000000;
+    background-color: #0000002b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title, #desc {
+    font-family: var(--font);
+    width: 100%;
+    background-color: inherit;
+    border: solid 1px #000;
+    padding: 5px;
+    margin: 0px;
+    color: #ffffffc8;
+}
+
+#title:focus, #desc:focus {
+    outline: none;
+}
+
+input#title {
+    font-size: 1.2rem;
+    padding: 15px;
+    text-align: center;
+}
+
+#desc {
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    padding-bottom: 30%;
+    text-wrap: wrap;
+}
+
+#addbox button {
+    font-family: var(--font);
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #ffffffeb;
+    background-color: #0000004e;
+    border: solid 3px #0000003d;
+    border-radius: 10px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+}
+
+#buttons button {
+    font-size: 0.8em;
+    min-width: 20%;
+    font-weight: bold;
+}
+
+#buttons #save {
+    background-color: #00ff15a2;
+}
+
+#buttons #back {
+    background-color: #ff0000a2;
+}
