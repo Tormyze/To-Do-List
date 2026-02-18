@@ -12,9 +12,16 @@
     </header>
 
     <main id="screen">
-        <button id="add" onclick="addNote()">+</button>
+        <ul id="tasks">
+            <li class="note" style="display: none;">
+                <h3 class="ntitle">Titulo</h3>
+                <p class="ndesc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis consectetur debitis, natus veritatis soluta error magnam magni quasi voluptate quibusdam animi qui, dolores similique doloremque harum nostrum aliquid reiciendis asperiores.</p>
+            </li>
+        </ul>
 
-        <div id="addbox" style="display: none;">
+        <div id="addb"><button id="add">+</button></div>
+
+        <div id="addbox" class="box">
             <input type="text" id="title" placeholder="Note title">
 
             <textarea type="text" id="desc" placeholder="Description..."></textarea>
@@ -25,18 +32,60 @@
             </div>
         </div>
     </main>
-
+    
     <script>
-        function addNote(){
-            document.querySelector("#add").remove();
+        let notes = 0;
+        const screen = document.querySelector("#screen");
+        const add = document.querySelector("#add");
+        const box = document.querySelector("#addbox");
 
-            let screen = document.querySelector("#screen");
-            screen.style.display = "block"
-            screen.style.height = "auto"
+        add.addEventListener("click", () => {
+            screen.style.display = "block";
+            add.style.display = 'none';
+            box.classList.add("open");
+        });
 
-            let box = document.querySelector("#addbox")
-            box.style.margin = "15px"
-            box.style.display = 'block'
+        function resetScreen(){
+            box.classList.remove('open');
+            add.style.display = 'inline-block';
+            const t = document.getElementById('title');
+            const d = document.getElementById('desc');
+            if (t) t.value = '';
+            if (d) d.value = '';
+        }
+
+        function save(){
+            const boxtitle = document.getElementById("title").value
+            const boxdesc = document.getElementById("desc").value
+
+            if(boxtitle == "" || boxdesc == ""){
+                alert(`Must write something!`)
+            } else {
+                const tasks = document.getElementById("tasks")
+                
+                let li = document.createElement("li")
+                li.classList.add('note')
+                li.style.display = 'block'
+                
+                let h3 = document.createElement("h3")
+                h3.classList.add('ntitle')
+                h3.innerText = boxtitle
+                
+                let p = document.createElement("p")
+                p.classList.add('ndesc')
+                p.innerText = boxdesc
+                
+                li.appendChild(h3)
+                li.appendChild(p)
+                tasks.appendChild(li)
+
+                notes++;
+                resetScreen();
+            }
+        }
+
+        function back(){
+            resetScreen();
         }
     </script>
 </body>

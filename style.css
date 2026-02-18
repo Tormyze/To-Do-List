@@ -2,6 +2,7 @@
 
 :root {
     --font: 'Elms Sans', 'Jost', 'SN Pro', 'Squada One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bgblock: #0000002b;
 }
 
 
@@ -32,19 +33,21 @@ h1 {font-size: 1.5rem;}
 #screen {
     background-color: #00000081;
     border: solid 3px #0000003d;
-    height: 50vh;
     width: 80%;
     margin: 5vh auto;
+    padding: 10px;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 h2 {
     font-size: 1.2rem;
     padding: 4px 10px;
+}
+
+#addb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #add {
@@ -54,6 +57,7 @@ h2 {
     border: solid 3px #0000003d;
     border-radius: 10px;
     background-color: #0000004e;
+    margin: 20px 0;
 }
 
 #add:hover {
@@ -64,12 +68,9 @@ h2 {
 
 #addbox {
     border: solid 3px #000000;
-    background-color: #0000002b;
+    background-color: var(--bgblock);
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: 10px;
 }
 
 #title, #desc {
@@ -82,14 +83,14 @@ h2 {
     color: #ffffffc8;
 }
 
-#title:focus, #desc:focus {
-    outline: none;
-}
-
-input#title {
+#title {
     font-size: 1.2rem;
     padding: 15px;
     text-align: center;
+}
+
+#title:focus, #desc:focus {
+    outline: none;
 }
 
 #desc {
@@ -100,28 +101,23 @@ input#title {
     text-wrap: wrap;
 }
 
-#addbox button {
-    font-family: var(--font);
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: #ffffffeb;
-    background-color: #0000004e;
-    border: solid 3px #0000003d;
-    border-radius: 10px;
-}
-
 #buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20%;
+    gap: 15%;
 }
 
 #buttons button {
-    font-size: 0.8em;
-    min-width: 20%;
+    font-family: var(--font);
     font-weight: bold;
+    font-size: 0.8em;
+    color: #ffffffeb;
+    min-width: 20%;
+    margin: 10px;
+    padding: 10px;
+    border: solid 3px #0000003d;
+    border-radius: 10px;
 }
 
 #buttons #save {
@@ -130,4 +126,37 @@ input#title {
 
 #buttons #back {
     background-color: #ff0000a2;
+}
+
+/* classList.toggle() */
+.box {display: none;}
+.open {display: block;}
+/* classList.toggle() */
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    list-style: none;
+}
+
+.note {
+    background-color: var(--bgblock);
+    border: solid 3px #0000003d;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.ntitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: dashed 2px #ffffff39;
+    padding-bottom: 5px;
+}
+
+.ndesc {
+    font-size: 0.8em;
+    margin-top: 5px;
+    text-align: justify;
 }
