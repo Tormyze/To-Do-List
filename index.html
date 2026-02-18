@@ -8,10 +8,11 @@
 </head>
 <body>
     <header>
-        <h1>To Do List</h1>
+        <h1>TORMYZE <span>HUB</span></h1>
     </header>
 
     <main id="screen">
+        <h1>To Do List</h1>
         <ul id="tasks">
             <li class="note" style="display: none;">
                 <h3 class="ntitle">Titulo</h3>
@@ -33,16 +34,34 @@
         </div>
     </main>
     
+    <footer>
+        <ul class="social">
+            <li id="github">
+                <a href="https://github.com/Tormyze"><img src="img/logo-github.svg" alt="GitHub profile"></a>
+            </li>
+            <li id="linkedin">
+                <a href="https://www.linkedin.com/in/paulojr-tormyze/"><img src="img/logo-linkedin.svg" alt="LinkedIn profile"></a>
+            </li>
+        </ul>
+    </footer>
+
     <script>
         let notes = 0;
         const screen = document.querySelector("#screen");
         const add = document.querySelector("#add");
         const box = document.querySelector("#addbox");
+        const tasksList = document.querySelector("#tasks");
 
         add.addEventListener("click", () => {
             screen.style.display = "block";
             add.style.display = 'none';
             box.classList.add("open");
+        });
+
+        tasksList.addEventListener("click", (e) => {
+            const li = e.target.closest("li.note");
+            if (!li) return; // click fora da nota
+            li.classList.toggle("done");
         });
 
         function resetScreen(){

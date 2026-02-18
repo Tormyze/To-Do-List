@@ -2,7 +2,9 @@
 
 :root {
     --font: 'Elms Sans', 'Jost', 'SN Pro', 'Squada One', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bgscreen: linear-gradient(#06dcb1, #005f4c);
     --bgblock: #0000002b;
+    --main: #005f4c;
 }
 
 
@@ -13,27 +15,44 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-family: var(--font);
     color: #ffffffeb;
-    background: #000000ec;
+    background-image: var(--bgscreen);
+    height: 100vh;
 }
 
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
+    background-color: var(--main);
+    padding: 10px;
+    position: fixed;
     width: 100%;
-    background-color: #00000081;
-    border-bottom: solid 3px #0000003d;
+    top: 0;
+    box-shadow: 0px 3px 10px #0000003d;
 }
 
-h1 {font-size: 1.5rem;}
+header h1 {
+    font-size: 12px;
+    text-align: left;
+    margin: 0;
+}
+
+header span {
+    color: aqua;
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px 0 20px;
+}
 
 #screen {
     background-color: #00000081;
     border: solid 3px #0000003d;
-    width: 80%;
+    width: 40%;
     margin: 5vh auto;
     padding: 10px;
     border-radius: 15px;
@@ -61,13 +80,13 @@ h2 {
 }
 
 #add:hover {
-    filter: invert();
-    opacity: 0.1;
+    filter: brightness(1.5);
+    background-color: #00000090;
     cursor: pointer;
 }
 
 #addbox {
-    border: solid 3px #000000;
+    border: solid 2px #0000006c;
     background-color: var(--bgblock);
     border-radius: 10px;
     margin-top: 10px;
@@ -77,7 +96,7 @@ h2 {
     font-family: var(--font);
     width: 100%;
     background-color: inherit;
-    border: solid 1px #000;
+    border: none;
     padding: 5px;
     margin: 0px;
     color: #ffffffc8;
@@ -87,6 +106,9 @@ h2 {
     font-size: 1.2rem;
     padding: 15px;
     text-align: center;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom: solid 2px #0000003d;
 }
 
 #title:focus, #desc:focus {
@@ -99,6 +121,8 @@ h2 {
     padding: 10px;
     padding-bottom: 30%;
     text-wrap: wrap;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
 #buttons {
@@ -126,6 +150,11 @@ h2 {
 
 #buttons #back {
     background-color: #ff0000a2;
+}
+
+#buttons button:hover {
+    filter: contrast(1.5);
+    cursor: pointer;
 }
 
 /* classList.toggle() */
@@ -159,4 +188,40 @@ h2 {
     font-size: 0.8em;
     margin-top: 5px;
     text-align: justify;
+}
+
+.note.done {
+    background-color: #00ff4479;
+}
+
+footer {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer ul {list-style: none;}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.social img {
+    width: 20px;
+    filter: invert(65%);
+}
+
+.social img:hover {
+    filter: invert(100%);
+    cursor: pointer;
 }
