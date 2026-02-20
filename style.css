@@ -97,8 +97,6 @@ h2 {
     width: 100%;
     background-color: inherit;
     border: none;
-    padding: 5px;
-    margin: 0px;
     color: #ffffffc8;
 }
 
@@ -125,6 +123,8 @@ h2 {
     border-bottom-right-radius: inherit;
 }
 
+#desc::-webkit-scrollbar {display: none;}
+
 #buttons {
     display: flex;
     justify-content: center;
@@ -146,6 +146,14 @@ h2 {
 
 #buttons #save {
     background-color: #00ff15a2;
+}
+
+.alert {
+    color: #ff0000ef;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 #buttons #back {
@@ -175,6 +183,27 @@ h2 {
     border: solid 3px #0000003d;
     border-radius: 10px;
     padding: 10px;
+    padding-bottom: 35px;
+    position: relative;
+}
+
+.btnDel {
+    all: unset;
+    display: block;
+    position: absolute;
+    left: -2.5px;
+    right: -2.5px;
+    bottom: -3px;
+    font-size: 0.7em;
+    font-weight: 900;
+    text-align: center;
+    padding: 5px 0;
+    color: #980202e2;
+    background-color: #420101;
+    border: solid 3px #0000003d;
+    border-top: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .ntitle {

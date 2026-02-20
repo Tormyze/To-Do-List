@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
     <title>To Do List</title>
 </head>
 <body>
@@ -14,10 +15,11 @@
     <main id="screen">
         <h1>To Do List</h1>
         <ul id="tasks">
-            <li class="note" style="display: none;">
+            <!-- <li class="note">
                 <h3 class="ntitle">Titulo</h3>
                 <p class="ndesc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis consectetur debitis, natus veritatis soluta error magnam magni quasi voluptate quibusdam animi qui, dolores similique doloremque harum nostrum aliquid reiciendis asperiores.</p>
-            </li>
+                <button class="btnDel"></button>
+            </li> -->
         </ul>
 
         <div id="addb"><button id="add">+</button></div>
@@ -43,59 +45,89 @@
                 <a href="https://www.linkedin.com/in/paulojr-tormyze/"><img src="img/logo-linkedin.svg" alt="LinkedIn profile"></a>
             </li>
         </ul>
+
+        <!-- <a href="https://www.flaticon.com/br/icones-gratis/bloco-de-anotacoes" title="bloco de anotações ícones">Bloco de anotações ícones criados por Freepik - Flaticon</a> -->
     </footer>
 
     <script>
         let notes = 0;
         const screen = document.querySelector("#screen");
         const add = document.querySelector("#add");
-        const box = document.querySelector("#addbox");
+        const addbox = document.querySelector("#addbox");
         const tasksList = document.querySelector("#tasks");
 
         add.addEventListener("click", () => {
             screen.style.display = "block";
             add.style.display = 'none';
-            box.classList.add("open");
+            addbox.classList.add("open");
         });
 
         tasksList.addEventListener("click", (e) => {
+            if (e.target.closest(".btn-delete")) return;
+
             const li = e.target.closest("li.note");
             if (!li) return; // click fora da nota
             li.classList.toggle("done");
         });
 
+        const t = document.getElementById('title');
+        const d = document.getElementById('desc');
+
         function resetScreen(){
-            box.classList.remove('open');
-            add.style.display = 'inline-block';
-            const t = document.getElementById('title');
-            const d = document.getElementById('desc');
+            addbox.classList.remove('open');
+            add.style.display = 'block';
             if (t) t.value = '';
             if (d) d.value = '';
+
+            if (document.querySelector(".alert")){
+                document.querySelector(".alert").remove()
+            }
         }
 
-        function save(){
-            const boxtitle = document.getElementById("title").value
-            const boxdesc = document.getElementById("desc").value
+        addbox.addEventListener("keydown", (e) => {
+            if (e.key === "Enter"){
+                if (e.shiftKey) {} else {
+                    e.preventDefault()
+                    save()
+                }
+            }
+        })
 
-            if(boxtitle == "" || boxdesc == ""){
-                alert(`Must write something!`)
+        function save(){
+            if(t.value == "" || d.value == ""){
+                if (document.querySelector(".alert")) return
+
+                let alert = document.createElement("p")
+                alert.textContent = "Must add something!"
+                alert.classList.add("alert")
+                
+                const screen = document.querySelector("#screen")
+                screen.appendChild(alert)
             } else {
                 const tasks = document.getElementById("tasks")
                 
                 let li = document.createElement("li")
                 li.classList.add('note')
-                li.style.display = 'block'
                 
                 let h3 = document.createElement("h3")
                 h3.classList.add('ntitle')
-                h3.innerText = boxtitle
+                h3.innerText = t.value
                 
                 let p = document.createElement("p")
                 p.classList.add('ndesc')
-                p.innerText = boxdesc
+                p.innerText = d.value.trim()
+
+                let btnDel = document.createElement("button")
+                btnDel.innerText = "X"
+                btnDel.classList.add("btnDel")
+
+                btnDel.onclick = () => {
+                    li.remove();
+                };
                 
                 li.appendChild(h3)
                 li.appendChild(p)
+                li.appendChild(btnDel)
                 tasks.appendChild(li)
 
                 notes++;
